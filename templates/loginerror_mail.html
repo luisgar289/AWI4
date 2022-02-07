@@ -7,9 +7,10 @@
 
         <h1>Login AWI4</h1>
         <form method="post">
-            <label>Email</label><input type="email" name="email" id="email"><br>
-            <label>Contraseña</label><input type="password" name="password" id="password"><br>
-            <button type="submit" value="login">Login</button>
+            <label>Email Incorrecto</label><input type="email" name="email" id="email">
+            <label>Contraseña</label><input type="password" name="password" id="password">
+            <button type="submit" value="login">Login</button> 
+            <a href="signup">Sign Up AWI4</a>
         </form>
         <style>
             *, *:before, *:after {
@@ -36,8 +37,7 @@
                     text-align: center;
                 }
                 
-                input[type="password"],
-                input[type="email"]
+                input[type="password"]
                 {
                     background: rgba(255,255,255,0.1);
                     border: none;
@@ -51,6 +51,22 @@
                     color: #000000;
                     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
                     margin-bottom: 30px;
+                }
+                input[type="email"]
+                {
+                    background: rgba(255,255,255,0.1);
+                    border: none;
+                    font-size: 18px;
+                    height: auto;
+                    margin: 0;
+                    outline: 0;
+                    padding: 15px;
+                    width: 100%;
+                    background-color: #ff4040;
+                    color: #000000;
+                    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+                    margin-bottom: 30px;
+                    align-content: center;
                 }
                 
                 button {
