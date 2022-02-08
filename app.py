@@ -30,7 +30,7 @@ class login: #pagina login
             email = formulario.email 
             password= formulario.password
             user = auth.sign_in_with_email_and_password(email, password) #autentica los datos con firebase
-            return web.bienvenida(email) #muestra la pagina de bienvenida.html, pero no redirecciona
+            return render.bienvenida(email) #muestra la pagina de bienvenida.html, pero no redirecciona
         except Exception as error: #recopila y muestra los datos de algun error
             formato = json.loads(error.args[1])
             error = formato['error']
