@@ -32,7 +32,7 @@ class login: #pagina login
             email = formulario.email 
             password= formulario.password
             user = auth.sign_in_with_email_and_password(email, password) #autentica los datos con firebase
-            informacion = auth.get_account_info(user['idToken'])
+            informacion = auth.get_account_info(user['idToken']) 
             usuarios = informacion['users']
             usuario = usuarios[0]
             localId = usuario['localId']
@@ -75,12 +75,9 @@ class signup: #pagin sign up
 
 class bienvenida: 
     def GET(self):
-        return render.bienvenida()
-
-    def POST(self):
         cookie = web.cookies().get('localid')
         if cookie is not None:
-            return web.seeother('bienvenida')
+            return render.bienvenida()
         else:
             return web.seeother('login')
     
@@ -89,8 +86,7 @@ class logout:
         web.setcookie('localid', None)
         cookie = web.cookies().get('localid')
         print(cookie)
-        return web.seeother('login')
-            
+        return web.seeother('login')         
 
 if __name__ == "__main__":
     web.config.debug = False
