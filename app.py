@@ -31,19 +31,21 @@ class login: #pagina login
             formulario = web.input() 
             email = formulario.email 
             password= formulario.password
-            user = auth.sign_in_with_email_and_password(email, password) #autentica los datos con firebase
+            #autentica los datos con firebase
+            user = auth.sign_in_with_email_and_password(email, password)
+            #obtiene los datos del usuario
             informacion = auth.get_account_info(user['idToken']) 
             usuarios = informacion['users']
             usuario = usuarios[0]
             localId = usuario['localId']
+            #genera una cookie
             web.setcookie('localid', localId)
             return web.seeother('bienvenida') #muestra la pagina de bienvenida.html, pero no redirecciona
         except Exception as error: #recopila y muestra los datos de algun error
             formato = json.loads(error.args[1])
             error = formato['error']
             message = error['message']
-            print(formato)
-            #print("Error Login.POST: {}".format(message)) #imprime en la terminal el error
+            print("Error Login.POST: {}".format(message)) #imprime en la terminal el error
             if message == "INVALID_EMAIL": 
                 return render.loginerror_mail() #muestra la pagina loginerror_mail
             elif message == "EMAIL_NOT_FOUND": 
@@ -75,19 +77,17 @@ class signup: #pagin sign up
 
 class bienvenida: 
     def GET(self):
-        cookie = web.cookies().get('localid')
-        if cookie is not None:
-            return render.bienvenida()
-        else:
-            return web.seeother('login')
+        cookie = web.cookies().get('localid') #obtiene la cookie localid
+        if cookie != "None": #si la cookie es distinta de None
+            return render.bienvenida() #el usuario ingresa al sistema
+        else: #si la cookie es None
+            return web.seeother('login') #regresa a la pagina de login
     
 class logout:
     def GET(self):
-        web.setcookie('localid', None)
-        cookie = web.cookies().get('localid')
-        print(cookie)
-        return web.seeother('login')         
-
+        web.setcookie('localid', "None") #establece la cookie en None
+        return web.seeother('login') #regresa a la pagina de login
+    
 if __name__ == "__main__":
     web.config.debug = False
     app.run()
