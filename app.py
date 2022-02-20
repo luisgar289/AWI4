@@ -112,7 +112,7 @@ class recuperar:
             print("Error Login.POST: {}".format(message))
             return render.recuperar(message)
     
-if __name__ == "__main__":
+if __name__ == "__main__": #ejecuta la aplicacion web
     web.config.debug = False
     app.run()
     
