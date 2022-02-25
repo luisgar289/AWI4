@@ -1,5 +1,4 @@
 #importa las librerias para el proyecto
-from email import message
 import web
 import firebase_config as token
 import pyrebase
