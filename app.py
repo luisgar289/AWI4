@@ -13,6 +13,8 @@ urls = (
     '/bienvenida','bienvenida',
     '/logout', 'logout',
     '/recuperar', 'recuperar',
+    '/usuarios', 'usuarios',
+    '/actualizar_usuario/(.*)', 'actualizar_usuario',
 )
 app = web.application(urls, globals())
 render = web.template.render('templates') #directorio de los archivos html
@@ -111,7 +113,37 @@ class recuperar:
             message = error['message']
             print("Error Login.POST: {}".format(message))
             return render.recuperar(message)
-    
+
+class usuarios:
+    def GET(self):
+        try:
+            users = db.child("usuarios").get() #obtiene todos los usuarios de la base de datos
+            return render.usuarios(users) #muestra la pagina usuarios.html
+        except Exception as error:
+            print("Error Login.GET: {}".format(error))
+            return render.usuarios(error)
+
+class actualizar_usuario:
+    def GET(self, localId):
+        user = db.child('usuarios').child(localId).get() #obtiene todos los usuarios de la base de datos
+        return render.actualizar_usuario(user)
+    def POST(self, localId):
+        try:
+            #obtiene los datos del formulario
+            formulario = web.input()
+            email = formulario.email
+            nombre = formulario.nombre
+            telefono = formulario.telefono
+            datos = {'nombre': nombre , 'telefono': telefono , 'email':email} #crea un diccionario con los datos del usuario
+            resultados = db.child("usuarios").child(localId).update(datos) #guarda los datos en la base de datos
+            return web.seeother('usuarios') #redirecciona a la pagina de login
+        except Exception as error:
+            formato = json.loads(error.args[1])
+            error = formato['error']
+            message = error['message']
+            print("Error Login.POST: {}".format(message))
+            return render.actualizar_usuario()
+
 if __name__ == "__main__": 
     web.config.debug = False
     app.run()
