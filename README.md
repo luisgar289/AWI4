@@ -1,5 +1,5 @@
 # AWI4
-Haciendo uso de [Web.py](https://webpy.org/) y [Pyrebase](https://github.com/nhorvath/Pyrebase4) para el backend y Html y [Bootstrap](https://getbootstrap.com/) para el frontend
+Haciendo uso de [Web.py](https://webpy.org/) y [Pyrebase](https://github.com/nhorvath/Pyrebase4) para el backend, Html y [Bootstrap](https://getbootstrap.com/) para el frontend
 
 ---
 Instalar las librerias necesarias
