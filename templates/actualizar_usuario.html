@@ -1,24 +1,13 @@
 $def with (user)
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Actualizar Usuario AW14</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    </head>
-    <form method="post" style="padding: 15px;">
-        <div class="mb-3">
+
+        <form method="post" style="padding: 15px;">
+            <label>Id</label>
+            <input type="text" name="id" class="form-control" value="$user.key()" readonly><br>
             <label>Nombre</label>
-            <input type="text" name="nombre" id="nombre" for="inputPassword6" class="form-control"><br>
-        </div>
-        <div class="mb-3">
+            <input type="text" name="nombre" id="nombre" class="form-control" value="$user.val().get('nombre')" ><br>
             <label>Telefono</label>
-            <input type="text" name="telefono" id="telefono" for="inputPassword6" class="form-control" value="$user.val().get('telefono')"><br>
-        </div>
-        <div class="mb-3">
+            <input type="text" name="telefono" id="telefono" class="form-control" value="$user.val().get('telefono')"><br>
             <label>Correo Electronico</label>
-            <input type="email" name="email" id="email" for="inputPassword6" class="form-control" value="$user.val().get('email')"><br>
-        <div class="mb-3">
+            <input type="text" name="email" id="email"  class="form-control" value="$user.val().get('email')"><br>
             <button type="submit" value="actualizar" class="btn btn-primary" style="background-color: #9B59B6; border: #9B59B6; width: 30%;">Guardar</button>
-        </div>
-    </form>
-</html>
+        </form>
