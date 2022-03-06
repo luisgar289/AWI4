@@ -16,6 +16,7 @@ urls = (
     '/actualizar_usuario/(.*)', 'actualizar_usuario',
 )
 app = web.application(urls, globals())
+wsgiapp = app.wsgifunc() # Prepara la webapp para funcionar con Gunicorn
 render = web.template.render('templates/', base = 'layout') #platillas html con una base
 render_plain = web.template.render('templates/') #platillas html sin una base
 firebase = pyrebase.initialize_app(token.firebaseConfig) #conexión a firebase
