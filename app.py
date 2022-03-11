@@ -6,7 +6,7 @@ import json
 
 #url y funcion de la aplicacion web
 urls = (
-    '/', 'login',
+    '/', 'bienvenida',
     '/login', 'login',
     '/signup', 'signup',
     '/bienvenida','bienvenida',
